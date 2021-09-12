@@ -126,7 +126,7 @@ bool Polygon2D::draw(QMatrix4x4 model, QMatrix4x4 projection){
 
     glLineWidth(m_thickness);
 
-    int N = m_curve.size();
+    int N = static_cast<int>(m_curve.size());
     if(N>0)
         glDrawElements(GL_LINE_STRIP, N, GL_UNSIGNED_SHORT, 0);
 
@@ -144,14 +144,14 @@ bool Polygon2D::updateOGLBuffer(){
 
     m_vao.bind();
     m_lineBuf.bind();
-    m_lineBuf.allocate(&m_curve.front(), m_curve.size() * sizeof(VertexData));
+    m_lineBuf.allocate(&m_curve.front(), static_cast<int>(m_curve.size() * sizeof(VertexData)));
 
     std::vector<GLushort> indices(m_curve.size());
     for(unsigned int j=0;j<indices.size();++j){
         indices[j] = j;
     }
     m_indexlineBuf.bind();
-    m_indexlineBuf.allocate(&indices.front(), indices.size()*sizeof(GLushort));
+    m_indexlineBuf.allocate(&indices.front(), (int)indices.size()*sizeof(GLushort));
 
     return true;
 }
