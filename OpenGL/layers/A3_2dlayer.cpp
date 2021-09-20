@@ -76,7 +76,8 @@ void A3_2DLayer::mouse_grab(MouseInfo m){
                 m_selected = selected_joint;
             }
         } else  if (m.button == 2 && selected_joint){
-            for(auto it2 = selected_joint->get_springs().begin(); it2 != selected_joint->get_springs().end(); ++it2){
+            auto springs = selected_joint->get_springs();
+            for(auto it2 = springs.begin(); it2 != springs.end(); ++it2){
                 for(auto it = m_springs.begin(); it != m_springs.end(); ++it){
                     if (*it == *it2){
                         m_springs.erase(it);
