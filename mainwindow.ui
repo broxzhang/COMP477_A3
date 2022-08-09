@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>COMP477: Assignment #3</string>
   </property>
   <widget class="A2_2DWidget" name="OpenGL"/>
   <widget class="QMenuBar" name="menuBar">
